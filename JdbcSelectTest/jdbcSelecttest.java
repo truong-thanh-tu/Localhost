@@ -14,7 +14,9 @@ public class jdbcSelecttest {
 			Statement stmt = conn.createStatement();
 			){
 		//Viet cau lenh truy van 
-			String strSelect ="select title, price, qty from book";
+//			String strSelect ="select title, price, qty from book";
+//			String strSelect ="select title, price, qty from book where author ='CodeLean VN'";
+			String strSelect ="select title,author, price, qty from book where author ='CodeLean VN' or price >= 30 order by price desc, id asc";
 			System.out.println("The SQL statemet is : "+strSelect+" \n");
 			ResultSet rset = stmt.executeQuery(strSelect);
 		//Xuy ly ket qua truy van
@@ -25,7 +27,7 @@ public class jdbcSelecttest {
 				String title = rset.getString("title");
 				double price = rset.getDouble("price");
 				int    qty   = rset.getInt("qty");
-				System.out.println(title+", "+price+", "+qty);
+				System.out.println("\n"+title+",\n "+price+",\n "+qty);
 				++rowCount;
 			}
 			System.out.println("Total number of records = "+rowCount);
